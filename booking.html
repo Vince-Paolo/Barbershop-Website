@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Appointment — Faded &amp; Co.</title>
+<meta name="description" content="Book your haircut, fade, beard trim, or grooming package at Faded & Co.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body data-page="booking">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="loader-screen" id="loaderScreen">
+  <div class="loader-mark">FADED <span>&amp;</span> CO.<div class="loader-bar"></div></div>
+</div>
+
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">FADED <span>&amp;</span> CO.</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" data-page="index">Home</a></li>
+    <li><a href="about.html" data-page="about">About</a></li>
+    <li><a href="services.html" data-page="services">Services</a></li>
+    <li><a href="gallery.html" data-page="gallery">Gallery</a></li>
+    <li><a href="team.html" data-page="team">Team</a></li>
+    <li><a href="contact.html" data-page="contact">Contact</a></li>
+    <li><a href="booking.html" class="nav-book">Book Now</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="services-page-hero">
+    <div class="eyebrow">Book Your Chair</div>
+    <h1 class="section-title">Pick a time. <em>We'll be ready.</em></h1>
+    <p>Fill in your details and we'll confirm your slot. No account needed, no calls required.</p>
+  </section>
+
+  <!-- ===== HOW IT WORKS STRIP ===== -->
+  <section class="booking-steps-strip">
+    <div class="booking-step">
+      <div class="booking-step-num">01</div>
+      <div class="booking-step-text">
+        <strong>Fill the form</strong>
+        <span>Pick your barber, service &amp; time</span>
+      </div>
+    </div>
+    <div class="booking-step-arrow">→</div>
+    <div class="booking-step">
+      <div class="booking-step-num">02</div>
+      <div class="booking-step-text">
+        <strong>We confirm via SMS</strong>
+        <span>You'll hear from us within the hour</span>
+      </div>
+    </div>
+    <div class="booking-step-arrow">→</div>
+    <div class="booking-step">
+      <div class="booking-step-num">03</div>
+      <div class="booking-step-text">
+        <strong>Show up on time</strong>
+        <span>Your chair will be waiting</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRESS BAR ===== -->
+  <section class="section section-light" style="padding-bottom:0;">
+    <div class="booking-progress" id="bookingProgress">
+      <div class="booking-progress-step active" data-step="1">
+        <div class="bps-circle">1</div>
+        <div class="bps-label">Your Details</div>
+      </div>
+      <div class="booking-progress-line"></div>
+      <div class="booking-progress-step" data-step="2">
+        <div class="bps-circle">2</div>
+        <div class="bps-label">Schedule</div>
+      </div>
+      <div class="booking-progress-line"></div>
+      <div class="booking-progress-step" data-step="3">
+        <div class="bps-circle">3</div>
+        <div class="bps-label">Confirm</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAIN BOOKING LAYOUT ===== -->
+  <section class="section section-light booking-layout">
+
+    <!-- LEFT: multi-step form -->
+    <div class="booking-form-col">
+      <form id="bookingForm" novalidate>
+
+        <!-- STEP 1: Your Details -->
+        <div class="booking-step-panel active" data-panel="1">
+          <h2 class="booking-panel-title">Your Details</h2>
+
+          <div class="form-row">
+            <div class="form-group" data-field="name">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" required autocomplete="name">
+              <div class="form-error"></div>
+            </div>
+            <div class="form-group" data-field="phone">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="09XX XXX XXXX" required autocomplete="tel" maxlength="13">
+              <div class="form-error"></div>
+            </div>
+          </div>
+
+          <div class="form-row single">
+            <div class="form-group" data-field="email">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+              <div class="form-error"></div>
+            </div>
+          </div>
+
+          <!-- Barber picker -->
+          <div class="form-row single">
+            <div class="form-group" data-field="barber">
+              <label for="barber">Preferred Barber</label>
+              <select id="barber" name="barber">
+                <option value="">No preference</option>
+                <option value="marco-reyes">Marco Reyes — Master Barber</option>
+                <option value="jay-santos">Jay Santos — Fade Specialist</option>
+                <option value="eli-cruz">Eli Cruz — Beard &amp; Shave</option>
+                <option value="paolo-dela-cruz">Paolo Dela Cruz — Junior Barber</option>
+              </select>
+              <div class="form-error"></div>
+            </div>
+          </div>
+
+          <!-- Barber card preview -->
+          <div class="barber-preview" id="barberPreview" style="display:none;">
+            <div class="barber-preview-photo" id="barberPreviewPhoto"></div>
+            <div>
+              <div class="barber-preview-name" id="barberPreviewName"></div>
+              <div class="barber-preview-role" id="barberPreviewRole"></div>
+              <div class="barber-preview-specialty" id="barberPreviewSpecialty"></div>
+            </div>
+          </div>
+
+          <div class="form-step-actions">
+            <button type="button" class="btn-gold" id="toStep2">Next: Schedule →</button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Schedule -->
+        <div class="booking-step-panel" data-panel="2">
+          <h2 class="booking-panel-title">Schedule</h2>
+
+          <!-- Service picker with detail reveal -->
+          <div class="form-row single">
+            <div class="form-group" data-field="service">
+              <label for="service">Service</label>
+              <select id="service" name="service" required>
+                <option value="">Select a service</option>
+                <option value="classic-haircut"  data-price="200" data-duration="30">Classic Haircut</option>
+                <option value="skin-fade"         data-price="280" data-duration="40">Skin Fade</option>
+                <option value="buzz-cut"          data-price="150" data-duration="15">Buzz Cut</option>
+                <option value="beard-trim"        data-price="150" data-duration="20">Beard Trim</option>
+                <option value="hot-towel-shave"   data-price="220" data-duration="25">Hot Towel Shave</option>
+                <option value="hair-coloring"     data-price="450" data-duration="60">Hair Coloring</option>
+                <option value="kids-haircut"      data-price="150" data-duration="20">Kids Haircut</option>
+                <option value="hair-wash"         data-price="100" data-duration="15">Hair Wash</option>
+                <option value="premium-package"   data-price="550" data-duration="75">Premium Grooming Package</option>
+              </select>
+              <div class="form-error"></div>
+            </div>
+          </div>
+
+          <!-- Service detail chip -->
+          <div class="service-detail" id="serviceDetail" style="display:none;">
+            <span class="service-detail-price" id="serviceDetailPrice"></span>
+            <span class="service-detail-sep">·</span>
+            <span class="service-detail-duration" id="serviceDetailDuration"></span>
+          </div>
+
+          <!-- Date -->
+          <div class="form-row single">
+            <div class="form-group" data-field="date">
+              <label for="date">Date</label>
+              <input type="date" id="date" name="date" required>
+              <div class="form-error"></div>
+            </div>
+          </div>
+
+          <!-- Time slots -->
+          <div class="form-group" data-field="time" id="timeGroup" style="display:none;">
+            <label>Select a Time Slot</label>
+            <div class="time-slots" id="timeSlots"></div>
+            <input type="hidden" id="time" name="time" required>
+            <div class="form-error"></div>
+          </div>
+
+          <!-- Hours hint -->
+          <div class="hours-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            <span>Mon–Fri 9am–8pm &nbsp;·&nbsp; Sat 9am–7pm &nbsp;·&nbsp; Sun 10am–5pm</span>
+          </div>
+
+          <!-- Notes -->
+          <div class="form-row single" style="margin-top:24px;">
+            <div class="form-group" data-field="notes">
+              <label for="notes">Notes <span style="color:var(--color-text-muted);font-weight:300;">(optional)</span></label>
+              <textarea id="notes" name="notes" placeholder="Anything your barber should know — allergies, references, etc." maxlength="300"></textarea>
+              <div class="notes-counter"><span id="notesCount">0</span>/300</div>
+              <div class="form-error"></div>
+            </div>
+          </div>
+
+          <div class="form-step-actions">
+            <button type="button" class="btn-outline" id="toStep1">← Back</button>
+            <button type="button" class="btn-gold" id="toStep3">Review Booking →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Confirm -->
+        <div class="booking-step-panel" data-panel="3">
+          <h2 class="booking-panel-title">Confirm Your Booking</h2>
+          <div class="booking-review" id="bookingReview">
+            <!-- populated by JS -->
+          </div>
+          <div class="form-step-actions" style="margin-top:32px;">
+            <button type="button" class="btn-outline" id="toStep2Back">← Edit</button>
+            <button type="submit" class="btn-gold" id="submitBooking">Confirm Booking</button>
+          </div>
+          <p class="booking-reset-link">Wrong details? <button type="button" id="startOver" class="link-btn">Start over</button></p>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- RIGHT: Summary sidebar -->
+    <aside class="booking-sidebar">
+      <div class="sidebar-summary" id="sidebarSummary">
+        <div class="sidebar-summary-title">Your Booking</div>
+        <div class="sidebar-row" id="sb-service">
+          <span class="sidebar-label">Service</span>
+          <span class="sidebar-val" id="sb-service-val">—</span>
+        </div>
+        <div class="sidebar-row" id="sb-barber">
+          <span class="sidebar-label">Barber</span>
+          <span class="sidebar-val" id="sb-barber-val">No preference</span>
+        </div>
+        <div class="sidebar-row" id="sb-date">
+          <span class="sidebar-label">Date</span>
+          <span class="sidebar-val" id="sb-date-val">—</span>
+        </div>
+        <div class="sidebar-row" id="sb-time">
+          <span class="sidebar-label">Time</span>
+          <span class="sidebar-val" id="sb-time-val">—</span>
+        </div>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-row price-row">
+          <span class="sidebar-label">Est. Total</span>
+          <span class="sidebar-val sidebar-price" id="sb-price-val">₱—</span>
+        </div>
+        <div class="sidebar-row">
+          <span class="sidebar-label">Duration</span>
+          <span class="sidebar-val" id="sb-duration-val">—</span>
+        </div>
+      </div>
+
+      <!-- Testimonial snippet -->
+      <div class="sidebar-testimonial">
+        <div class="sidebar-stars">★★★★★</div>
+        <p class="sidebar-quote">"Booked in 2 minutes, showed up, no waiting — best decision."</p>
+        <div class="sidebar-author">— Diego M., regular since 2023</div>
+      </div>
+    </aside>
+
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">FADED <span>&amp;</span> CO.</div>
+      <p class="footer-desc">A modern barbershop built on old-fashioned craft — precision cuts, hot towel shaves, and a chair that's always worth the wait.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Instagram">IG</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="booking.html">Booking</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Working Hours</div>
+      <ul class="footer-links">
+        <li>Mon&nbsp;&ndash;&nbsp;Fri: 9am&nbsp;&ndash;&nbsp;8pm</li>
+        <li>Saturday: 9am&nbsp;&ndash;&nbsp;7pm</li>
+        <li>Sunday: 10am&nbsp;&ndash;&nbsp;5pm</li>
+      </ul>
+    </div>
+    <div class="footer-col-newsletter">
+      <div class="footer-heading">Newsletter</div>
+      <p class="footer-desc">Get fresh cuts and shop updates in your inbox.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="Your email" required>
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span id="footerYear">2026</span> Faded &amp; Co. All rights reserved.</span>
+    <span>123 Mabini St, Calamba, Laguna</span>
+  </div>
+</footer>
+
+<!-- Start Over confirm modal -->
+<div class="confirm-modal" id="startOverModal">
+  <div class="confirm-modal-card">
+    <div class="confirm-title">Start over?</div>
+    <p class="confirm-desc">This will clear everything you've entered.</p>
+    <div style="display:flex;gap:14px;justify-content:center;margin-top:8px;">
+      <button class="btn-outline" id="startOverCancel">Cancel</button>
+      <button class="btn-gold" id="startOverConfirm">Yes, start over</button>
+    </div>
+  </div>
+</div>
+
+<!-- Success modal -->
+<div class="confirm-modal" id="confirmModal">
+  <div class="confirm-modal-card">
+    <div class="confirm-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <div class="confirm-title">You're booked.</div>
+    <p class="confirm-desc" id="confirmDesc">We'll see you then!</p>
+    <button class="btn-gold" id="confirmClose">Done</button>
+  </div>
+</div>
+
+<script src="js/navbar.js"></script>
+<script src="js/animation.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

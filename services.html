@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Faded &amp; Co.</title>
+<meta name="description" content="Full service menu at Faded & Co. — haircuts, fades, beard trims, shaves, coloring and grooming packages with prices and durations.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body data-page="services">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="loader-screen" id="loaderScreen">
+  <div class="loader-mark">
+    FADED <span>&amp;</span> CO.
+    <div class="loader-bar"></div>
+  </div>
+</div>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">FADED <span>&amp;</span> CO.</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" data-page="index">Home</a></li>
+    <li><a href="about.html" data-page="about">About</a></li>
+    <li><a href="services.html" data-page="services">Services</a></li>
+    <li><a href="gallery.html" data-page="gallery">Gallery</a></li>
+    <li><a href="team.html" data-page="team">Team</a></li>
+    <li><a href="contact.html" data-page="contact">Contact</a></li>
+    <li><a href="booking.html" class="nav-book">Book Now</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="services-page-hero">
+    <div class="eyebrow">The Full Menu</div>
+    <h1 class="section-title">Every cut, <em>clearly priced.</em></h1>
+    <p>No surprise add-ons at the chair. Pick a service, see the price and time up front, and book straight from here.</p>
+  </section>
+
+  <!-- ===== SERVICE GRID ===== -->
+  <section class="section section-light">
+    <div class="service-filter" role="group" aria-label="Filter services">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="hair">Hair</button>
+      <button data-filter="beard">Beard</button>
+      <button data-filter="kids">Kids</button>
+      <button data-filter="combo">Combo</button>
+    </div>
+
+    <div class="service-grid" id="serviceGrid">
+
+      <div class="service-card" data-category="hair" data-reveal>
+        <div class="service-card-img" style="background-image:url('assets/images/services/classic-haircut.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-top">
+            <div class="service-card-title">Classic Haircut</div>
+            <div class="service-card-price">₱200</div>
+          </div>
+          <p class="service-card-desc">A timeless cut tailored to your face shape — scissor and clipper work, finished with a clean line-up.</p>
+          <div class="service-card-foot">
+            <span class="service-card-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              30 mins
+            </span>
+            <a href="booking.html?service=classic-haircut" class="service-card-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card featured" data-category="hair" data-reveal data-reveal-delay="1">
+        <div class="service-card-img" style="background-image:url('assets/images/services/skin-fade.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-top">
+            <div class="service-card-title">Skin Fade</div>
+            <div class="service-card-price">₱280</div>
+          </div>
+          <p class="service-card-desc">A seamless taper down to skin, blended by hand for the sharpest possible line every time.</p>
+          <div class="service-card-foot">
+            <span class="service-card-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              40 mins
+            </span>
+            <a href="booking.html?service=skin-fade" class="service-card-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="hair" data-reveal data-reveal-delay="2">
+        <div class="service-card-img" style="background-image:url('assets/images/services/buzz-cut.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-top">
+            <div class="service-card-title">Buzz Cut</div>
+            <div class="service-card-price">₱150</div>
+          </div>
+          <p class="service-card-desc">Quick, even, low-maintenance — one guard length, all over, done right.</p>
+          <div class="service-card-foot">
+            <span class="service-card-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              15 mins
+            </span>
+            <a href="booking.html?service=buzz-cut" class="service-card-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="beard" data-reveal>
+        <div class="service-card-img" style="background-image:url('assets/images/services/beard-trim.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-top">
+            <div class="service-card-title">Beard Trim</div>
+            <div class="service-card-price">₱150</div>
+          </div>
+          <p class="service-card-desc">Shape, line, and even out your beard with precision detailing around the edges.</p>
+          <div class="service-card-foot">
+            <span class="service-card-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              20 mins
+            </span>
+            <a href="booking.html?service=beard-trim" class="service-card-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="beard" data-reveal data-reveal-delay="1">
+        <div class="service-card-img" style="background-image:url('assets/images/services/hot-towel-shave.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-top">
+            <div class="service-card-title">Hot Towel Shave</div>
+            <div class="service-card-price">₱220</div>
+          </div>
+          <p class="service-card-desc">A straight-razor shave with hot towels and pre-shave oil for the smoothest finish you'll feel all week.</p>
+          <div class="service-card-foot">
+            <span class="service-card-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              25 mins
+            </span>
+            <a href="booking.html?service=hot-towel-shave" class="service-card-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="hair" data-reveal data-reveal-delay="2">
+        <div class="service-card-img" style="background-image:url('assets/images/services/hair-coloring.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-top">
+            <div class="service-card-title">Hair Coloring</div>
+            <div class="service-card-price">₱450</div>
+          </div>
+          <p class="service-card-desc">Full color or subtle gray blending using ammonia-light formulas that go easy on your scalp.</p>
+          <div class="service-card-foot">
+            <span class="service-card-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              60 mins
+            </span>
+            <a href="booking.html?service=hair-coloring" class="service-card-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="kids" data-reveal>
+        <div class="service-card-img" style="background-image:url('assets/images/services/kids-haircut.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-top">
+            <div class="service-card-title">Kids Haircut</div>
+            <div class="service-card-price">₱150</div>
+          </div>
+          <p class="service-card-desc">Patient, friendly cuts for kids 10 and under — fidgeting fully expected.</p>
+          <div class="service-card-foot">
+            <span class="service-card-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              20 mins
+            </span>
+            <a href="booking.html?service=kids-haircut" class="service-card-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="hair" data-reveal data-reveal-delay="1">
+        <div class="service-card-img" style="background-image:url('assets/images/services/hair-wash.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-top">
+            <div class="service-card-title">Hair Wash</div>
+            <div class="service-card-price">₱100</div>
+          </div>
+          <p class="service-card-desc">A relaxing shampoo and scalp massage — great on its own or paired with any cut.</p>
+          <div class="service-card-foot">
+            <span class="service-card-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              15 mins
+            </span>
+            <a href="booking.html?service=hair-wash" class="service-card-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card" data-category="combo" data-reveal data-reveal-delay="2">
+        <div class="service-card-img" style="background-image:url('assets/images/services/premium-package.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-top">
+            <div class="service-card-title">Premium Grooming Package</div>
+            <div class="service-card-price">₱550</div>
+          </div>
+          <p class="service-card-desc">Haircut, beard trim, hot towel shave and wash in one sitting — the full chair experience.</p>
+          <div class="service-card-foot">
+            <span class="service-card-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              75 mins
+            </span>
+            <a href="booking.html?service=premium-package" class="service-card-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== BOOKING CTA ===== -->
+  <section class="booking-cta">
+    <div class="label-row booking-cta-eyebrow" data-reveal>
+      <span class="label-num">02</span>
+      <span class="label-text">Ready When You Are</span>
+    </div>
+    <h2 class="section-title" data-reveal>Not sure what you need? <em>We'll figure it out in the chair.</em></h2>
+    <a href="booking.html" class="btn-gold" data-reveal>Book Appointment</a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">FADED <span>&amp;</span> CO.</div>
+      <p class="footer-desc">A modern barbershop built on old-fashioned craft — precision cuts, hot towel shaves, and a chair that's always worth the wait.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Instagram">IG</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="booking.html">Booking</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Working Hours</div>
+      <ul class="footer-links">
+        <li>Mon&nbsp;&ndash;&nbsp;Fri: 9am&nbsp;&ndash;&nbsp;8pm</li>
+        <li>Saturday: 9am&nbsp;&ndash;&nbsp;7pm</li>
+        <li>Sunday: 10am&nbsp;&ndash;&nbsp;5pm</li>
+      </ul>
+    </div>
+    <div class="footer-col-newsletter">
+      <div class="footer-heading">Newsletter</div>
+      <p class="footer-desc">Get fresh cuts and shop updates in your inbox.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="Your email" required>
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span id="footerYear">2026</span> Faded &amp; Co. All rights reserved.</span>
+    <span>123 Mabini St, Calamba, Laguna</span>
+  </div>
+</footer>
+
+<script src="js/navbar.js"></script>
+<script src="js/animation.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

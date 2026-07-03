@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faded &amp; Co. — Modern Barbershop</title>
+<meta name="description" content="Faded & Co. — precision haircuts, skin fades, beard trims and hot towel shaves. Book your chair online.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body data-page="index">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="loader-screen" id="loaderScreen">
+  <div class="loader-mark">
+    FADED <span>&amp;</span> CO.
+    <div class="loader-bar"></div>
+  </div>
+</div>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">FADED <span>&amp;</span> CO.</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" data-page="index">Home</a></li>
+    <li><a href="about.html" data-page="about">About</a></li>
+    <li><a href="services.html" data-page="services">Services</a></li>
+    <li><a href="gallery.html" data-page="gallery">Gallery</a></li>
+    <li><a href="team.html" data-page="team">Team</a></li>
+    <li><a href="contact.html" data-page="contact">Contact</a></li>
+    <li><a href="booking.html" class="nav-book">Book Now</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="eyebrow">Calamba's Modern Barbershop</div>
+      <h1 class="fade-title">
+        <span class="l1">PRECISION</span>
+        <span class="l2">CUTS,</span>
+        <span class="l3">clean fades.</span>
+      </h1>
+      <p class="hero-sub">No rush, no guesswork — just sharp lines, hot towels, and barbers who treat every fade like it's the only one that matters.</p>
+      <div class="hero-cta">
+        <a href="booking.html" class="btn-gold">Book Appointment</a>
+        <a href="services.html" class="btn-ghost">View Services</a>
+      </div>
+      <div class="scroll-indicator"><div class="line"></div>SCROLL</div>
+    </div>
+    <div class="hero-right">
+      <div class="fade-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURED SERVICES (chalkboard menu) ===== -->
+  <section class="section section-dark">
+    <div class="label-row" data-reveal>
+      <span class="label-num">02</span>
+      <span class="label-text">Featured Services</span>
+    </div>
+    <h2 class="section-title" data-reveal>Services, priced like it's <em>chalked on the wall.</em></h2>
+
+    <div class="menu-list">
+      <div class="menu-row" data-reveal>
+        <div class="menu-thumb" style="background-image:url('assets/images/services/classic-haircut.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="menu-text">
+          <div class="menu-name">Classic Haircut</div>
+          <div class="menu-dots"></div>
+        </div>
+        <div class="menu-meta"><div class="menu-price">₱200</div><div class="menu-time">30 mins</div></div>
+      </div>
+
+      <div class="menu-row" data-reveal data-reveal-delay="1">
+        <div class="menu-thumb" style="background-image:url('assets/images/services/skin-fade.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="menu-text">
+          <div class="menu-name">Skin Fade</div>
+          <div class="menu-dots"></div>
+        </div>
+        <div class="menu-meta"><div class="menu-price">₱280</div><div class="menu-time">40 mins</div></div>
+      </div>
+
+      <div class="menu-row" data-reveal data-reveal-delay="2">
+        <div class="menu-thumb" style="background-image:url('assets/images/services/beard-trim.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="menu-text">
+          <div class="menu-name">Beard Trim</div>
+          <div class="menu-dots"></div>
+        </div>
+        <div class="menu-meta"><div class="menu-price">₱150</div><div class="menu-time">20 mins</div></div>
+      </div>
+
+      <div class="menu-row" data-reveal data-reveal-delay="3">
+        <div class="menu-thumb" style="background-image:url('assets/images/services/hot-towel-shave.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="menu-text">
+          <div class="menu-name">Hot Towel Shave</div>
+          <div class="menu-dots"></div>
+        </div>
+        <div class="menu-meta"><div class="menu-price">₱220</div><div class="menu-time">25 mins</div></div>
+      </div>
+
+      <div class="menu-row" data-reveal data-reveal-delay="4">
+        <div class="menu-thumb" style="background-image:url('assets/images/services/premium-package.jpg')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M3 7l13 13M3 17l5-5M14 6l7 7M9 10l5-5"/></svg>
+        </div>
+        <div class="menu-text">
+          <div class="menu-name">Premium Grooming Package</div>
+          <div class="menu-dots"></div>
+        </div>
+        <div class="menu-meta"><div class="menu-price">₱550</div><div class="menu-time">75 mins</div></div>
+      </div>
+    </div>
+
+    <div class="menu-footer" data-reveal>
+      <a href="services.html" class="btn-gold">See Full Menu</a>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT PREVIEW ===== -->
+  <section class="section section-light">
+    <div class="label-row" data-reveal>
+      <span class="label-num">03</span>
+      <span class="label-text">About Us</span>
+    </div>
+    <div class="about-preview">
+      <div class="about-preview-img" data-reveal style="background:url('assets/images/about/shop-interior.jpg') center/cover; color:transparent;"></div>
+      <div class="about-preview-text" data-reveal data-reveal-delay="1">
+        <h2 class="section-title" style="margin-bottom:24px;">A chair worth <em>waiting for.</em></h2>
+        <p>Faded &amp; Co. started as a single chair in the back of a tailor shop. Today it's a full crew of barbers who still believe a haircut is a craft, not a transaction.</p>
+        <p>Every cut starts with a conversation, ends with a hot towel, and is never rushed out the door.</p>
+        <div class="stat-row">
+          <div>
+            <div class="stat-num"><span data-counter="8">0</span>+</div>
+            <div class="stat-label">Years Running</div>
+          </div>
+          <div>
+            <div class="stat-num"><span data-counter="12">0</span></div>
+            <div class="stat-label">Barbers on Deck</div>
+          </div>
+          <div>
+            <div class="stat-num"><span data-counter="15000">0</span>+</div>
+            <div class="stat-label">Cuts Given</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY CHOOSE US ===== -->
+  <section class="section section-dark">
+    <div class="label-row" data-reveal>
+      <span class="label-num">04</span>
+      <span class="label-text">Why Choose Us</span>
+    </div>
+    <h2 class="section-title" data-reveal>What sets the chair <em>apart.</em></h2>
+    <div class="why-grid">
+      <div class="why-card" data-reveal>
+        <div class="why-title">Skilled Barbers</div>
+        <div class="why-desc">Every barber on our floor trained for years before touching a paying client's fade.</div>
+      </div>
+      <div class="why-card" data-reveal data-reveal-delay="1">
+        <div class="why-title">No Rush Policy</div>
+        <div class="why-desc">Appointments are spaced so your cut never feels like it's on a timer.</div>
+      </div>
+      <div class="why-card" data-reveal data-reveal-delay="2">
+        <div class="why-title">Premium Tools</div>
+        <div class="why-desc">Sanitized, sharpened, and replaced often — because dull blades make bad lines.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MEET THE BARBERS ===== -->
+  <section class="section section-light">
+    <div class="label-row" data-reveal>
+      <span class="label-num">05</span>
+      <span class="label-text">Meet The Barbers</span>
+    </div>
+    <h2 class="section-title" data-reveal>The hands behind <em>the fade.</em></h2>
+    <div class="team-grid">
+      <div class="team-card" data-reveal>
+        <div class="team-photo" style="background:url('assets/images/team/marco-reyes.jpg') center/cover; color:transparent;">Photo</div>
+        <div class="team-info">
+          <div class="team-name">Marco Reyes</div>
+          <div class="team-role">Master Barber</div>
+        </div>
+      </div>
+      <div class="team-card" data-reveal data-reveal-delay="1">
+        <div class="team-photo" style="background:url('assets/images/team/jay-santos.jpg') center/cover; color:transparent;">Photo</div>
+        <div class="team-info">
+          <div class="team-name">Jay Santos</div>
+          <div class="team-role">Fade Specialist</div>
+        </div>
+      </div>
+      <div class="team-card" data-reveal data-reveal-delay="2">
+        <div class="team-photo" style="background:url('assets/images/team/eli-cruz.jpg') center/cover; color:transparent;">Photo</div>
+        <div class="team-info">
+          <div class="team-name">Eli Cruz</div>
+          <div class="team-role">Beard &amp; Shave</div>
+        </div>
+      </div>
+      <div class="team-card" data-reveal data-reveal-delay="3">
+        <div class="team-photo" style="background:url('assets/images/team/paolo-dela-cruz.jpg') center/cover; color:transparent;">Photo</div>
+        <div class="team-info">
+          <div class="team-name">Paolo Dela Cruz</div>
+          <div class="team-role">Junior Barber</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="section section-dark">
+    <div class="label-row" data-reveal>
+      <span class="label-num">06</span>
+      <span class="label-text">Customer Words</span>
+    </div>
+    <div class="testimonial-track" data-reveal>
+      <div class="testimonial-card" id="testimonialCard">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-quote" id="testimonialQuote">Best fade I've had in this city, no contest. Marco doesn't miss.</p>
+        <div class="testimonial-author" id="testimonialAuthor">— Diego M., regular since 2023</div>
+      </div>
+      <div class="testimonial-nav">
+        <button id="testimonialPrev" aria-label="Previous testimonial">&larr;</button>
+        <button id="testimonialNext" aria-label="Next testimonial">&rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY PREVIEW ===== -->
+  <section class="section section-light">
+    <div class="label-row" data-reveal>
+      <span class="label-num">07</span>
+      <span class="label-text">Gallery</span>
+    </div>
+    <h2 class="section-title" data-reveal>A few we're <em>proud of.</em></h2>
+    <div class="gallery-grid">
+      <div class="gallery-item tall" data-reveal
+           style="background-image:url('assets/images/services/skin-fade.jpg')"></div>
+      <div class="gallery-item" data-reveal data-reveal-delay="1"
+           style="background-image:url('assets/images/services/beard-trim.jpg')"></div>
+      <div class="gallery-item" data-reveal data-reveal-delay="2"
+           style="background-image:url('assets/images/about/shop-interior.jpg')"></div>
+      <div class="gallery-item" data-reveal data-reveal-delay="3"
+           style="background-image:url('assets/images/services/classic-haircut.jpg')"></div>
+      <div class="gallery-item" data-reveal data-reveal-delay="4"
+           style="background-image:url('assets/images/services/premium-package.jpg')"></div>
+      <div class="gallery-item tall" data-reveal
+           style="background-image:url('assets/images/gallery/customer-1.jpg')"></div>
+    </div>
+    <div class="menu-footer" data-reveal>
+      <a href="gallery.html" class="btn-gold">View Full Gallery</a>
+    </div>
+  </section>
+
+  <!-- ===== BOOKING CTA ===== -->
+  <section class="booking-cta">
+    <div class="label-row booking-cta-eyebrow" data-reveal>
+      <span class="label-num">08</span>
+      <span class="label-text">Ready When You Are</span>
+    </div>
+    <h2 class="section-title" data-reveal>Your chair is <em>one click away.</em></h2>
+    <a href="booking.html" class="btn-gold" data-reveal>Book Appointment</a>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">FADED <span>&amp;</span> CO.</div>
+      <p class="footer-desc">A modern barbershop built on old-fashioned craft — precision cuts, hot towel shaves, and a chair that's always worth the wait.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Instagram">IG</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="booking.html">Booking</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Working Hours</div>
+      <ul class="footer-links">
+        <li>Mon&nbsp;&ndash;&nbsp;Fri: 9am&nbsp;&ndash;&nbsp;8pm</li>
+        <li>Saturday: 9am&nbsp;&ndash;&nbsp;7pm</li>
+        <li>Sunday: 10am&nbsp;&ndash;&nbsp;5pm</li>
+      </ul>
+    </div>
+    <div class="footer-col-newsletter">
+      <div class="footer-heading">Newsletter</div>
+      <p class="footer-desc">Get fresh cuts and shop updates in your inbox.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="Your email" required>
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span id="footerYear">2026</span> Faded &amp; Co. All rights reserved.</span>
+    <span>123 Mabini St, Calamba, Laguna</span>
+  </div>
+</footer>
+
+<script src="js/navbar.js"></script>
+<script src="js/animation.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

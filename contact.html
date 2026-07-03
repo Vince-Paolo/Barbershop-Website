@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Faded &amp; Co.</title>
+<meta name="description" content="Get in touch with Faded & Co. — address, hours, phone, email, and a contact form.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/animations.css">
+</head>
+<body data-page="contact">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="loader-screen" id="loaderScreen">
+  <div class="loader-mark">
+    FADED <span>&amp;</span> CO.
+    <div class="loader-bar"></div>
+  </div>
+</div>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">FADED <span>&amp;</span> CO.</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" data-page="index">Home</a></li>
+    <li><a href="about.html" data-page="about">About</a></li>
+    <li><a href="services.html" data-page="services">Services</a></li>
+    <li><a href="gallery.html" data-page="gallery">Gallery</a></li>
+    <li><a href="team.html" data-page="team">Team</a></li>
+    <li><a href="contact.html" data-page="contact">Contact</a></li>
+    <li><a href="booking.html" class="nav-book">Book Now</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="services-page-hero">
+    <div class="eyebrow">Get In Touch</div>
+    <h1 class="section-title">Questions? <em>We're easy to reach.</em></h1>
+    <p>Drop by, call, or send a message — whichever's easiest.</p>
+  </section>
+
+  <!-- ===== CONTACT LAYOUT ===== -->
+  <section class="section section-light">
+    <div class="contact-layout">
+
+      <!-- Left: info + map -->
+      <div data-reveal>
+        <div class="label-row">
+          <span class="label-num">02</span>
+          <span class="label-text">Find Us</span>
+        </div>
+        <div class="contact-map">
+          <iframe
+            src="https://www.google.com/maps?q=Calamba,Laguna,Philippines&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Faded & Co. location map">
+          </iframe>
+        </div>
+
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-7.2-7-12a7 7 0 0 1 14 0c0 4.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">Address</div>
+              <div class="contact-info-value">123 Mabini St, Calamba, Laguna, Philippines</div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">Phone</div>
+              <div class="contact-info-value"><a href="tel:+639171234567">+63 917 123 4567</a></div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            </div>
+            <div>
+              <div class="contact-info-label">Email</div>
+              <div class="contact-info-value"><a href="mailto:hello@fadedandco.ph">hello@fadedandco.ph</a></div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div class="contact-info-label">Opening Hours</div>
+              <div class="hours-table">
+                <div class="hours-row"><span>Monday – Friday</span><span>9:00 AM – 8:00 PM</span></div>
+                <div class="hours-row"><span>Saturday</span><span>9:00 AM – 7:00 PM</span></div>
+                <div class="hours-row"><span>Sunday</span><span>10:00 AM – 5:00 PM</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:32px;">
+          <div class="contact-info-label" style="margin-bottom:14px;">Follow Us</div>
+          <div class="social-row">
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 9h3V5h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9a1 1 0 0 1 1-1z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: contact form -->
+      <div data-reveal data-reveal-delay="1">
+        <div class="label-row">
+          <span class="label-num">03</span>
+          <span class="label-text">Send A Message</span>
+        </div>
+        <form class="form-card" id="contactForm" novalidate style="max-width:none; padding:40px;">
+          <div class="form-row single">
+            <div class="form-group" data-field="name">
+              <label for="contactName">Full Name</label>
+              <input type="text" id="contactName" name="name" placeholder="Juan Dela Cruz" required>
+              <div class="form-error"></div>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-group" data-field="email">
+              <label for="contactEmail">Email</label>
+              <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required>
+              <div class="form-error"></div>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-group" data-field="subject">
+              <label for="contactSubject">Subject</label>
+              <input type="text" id="contactSubject" name="subject" placeholder="What's this about?" required>
+              <div class="form-error"></div>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="form-group" data-field="message">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" name="message" placeholder="Write your message here..." required></textarea>
+              <div class="form-error"></div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-gold">Send Message</button>
+            <button type="reset" class="btn-outline">Reset</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">FADED <span>&amp;</span> CO.</div>
+      <p class="footer-desc">A modern barbershop built on old-fashioned craft — precision cuts, hot towel shaves, and a chair that's always worth the wait.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Instagram">IG</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Quick Links</div>
+      <ul class="footer-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="booking.html">Booking</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Working Hours</div>
+      <ul class="footer-links">
+        <li>Mon&nbsp;&ndash;&nbsp;Fri: 9am&nbsp;&ndash;&nbsp;8pm</li>
+        <li>Saturday: 9am&nbsp;&ndash;&nbsp;7pm</li>
+        <li>Sunday: 10am&nbsp;&ndash;&nbsp;5pm</li>
+      </ul>
+    </div>
+    <div class="footer-col-newsletter">
+      <div class="footer-heading">Newsletter</div>
+      <p class="footer-desc">Get fresh cuts and shop updates in your inbox.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="Your email" required>
+        <button type="submit">Join</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span id="footerYear">2026</span> Faded &amp; Co. All rights reserved.</span>
+    <span>123 Mabini St, Calamba, Laguna</span>
+  </div>
+</footer>
+
+<!-- ===== CONFIRMATION MODAL (reused for contact form) ===== -->
+<div class="confirm-modal" id="confirmModal">
+  <div class="confirm-modal-card">
+    <div class="confirm-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <div class="confirm-title">Message sent.</div>
+    <p class="confirm-desc" id="confirmDesc">Thanks for reaching out — we'll get back to you shortly.</p>
+    <button class="btn-gold" id="confirmClose">Done</button>
+  </div>
+</div>
+
+<script src="js/navbar.js"></script>
+<script src="js/animation.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
