@@ -1,0 +1,41 @@
+/* ==========================================================================
+   FADED & CO — Design Tokens
+   ========================================================================== */
+:root{
+  /* Brand palette */
+  --color-primary:   #1A1A1A;   /* near-black panels, nav, dark sections */
+  --color-secondary: #D4AF37;   /* gold accent — sparingly */
+  --color-accent:    #FFFFFF;   /* white text on dark */
+  --color-bg:        #F5F5F5;   /* light section background */
+  --color-text:      #333333;   /* body text on light bg */
+  --color-text-muted:#888888;
+  --color-text-on-dark-muted:#cfcfcf;
+
+  --color-border-dark: rgba(255,255,255,.12);
+  --color-border-gold: rgba(212,175,55,.35);
+
+  /* Typography */
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'Poppins', sans-serif;
+  --font-ui:      'Montserrat', sans-serif;
+
+  /* Type scale */
+  --fs-hero:   clamp(2.6rem, 5.5vw, 4.6rem);
+  --fs-h2:     2.4rem;
+  --fs-h3:     1.3rem;
+  --fs-body:   1rem;
+  --fs-small:  .78rem;
+  --fs-label:  .72rem;
+
+  /* Spacing */
+  --space-section-y: 120px;
+  --space-section-x: 7%;
+  --space-section-y-mobile: 80px;
+  --space-section-x-mobile: 6%;
+
+  /* Misc */
+  --radius-sm: 4px;
+  --transition-fast: .25s ease;
+  --transition-med: .3s ease;
+  --shadow-nav: 0 2px 20px rgba(0,0,0,.3);
+}

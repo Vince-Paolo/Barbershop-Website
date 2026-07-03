@@ -1,0 +1,102 @@
+/* ==========================================================================
+   FADED & CO — Responsive Rules
+   ========================================================================== */
+
+/* Laptop / small desktop */
+@media (max-width:1180px){
+  .team-grid{grid-template-columns:repeat(2,1fr);}
+  .why-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1.2fr 1fr 1fr;}
+  .footer-grid .footer-col-newsletter{grid-column:1 / -1;}
+  .service-grid{grid-template-columns:repeat(2,1fr);}
+  .gallery-page-grid{grid-template-columns:repeat(3,1fr); grid-auto-rows:180px;}
+  .team-page-grid{grid-template-columns:repeat(2,1fr);}
+  .lightbox-prev{left:14px;}
+  .lightbox-next{right:14px;}
+  .form-card{padding:32px; max-width:none;}
+  .form-row{grid-template-columns:1fr;}
+  .about-hero{grid-template-columns:1fr;}
+  .about-hero-img{height:38vh;}
+  .about-hero-text{padding:120px 8% 60px;}
+  .value-grid{grid-template-columns:repeat(2,1fr);}
+  .environment-grid{grid-template-columns:repeat(2,1fr);}
+  .contact-layout{grid-template-columns:1fr; gap:40px;}
+}
+
+/* Navbar squeeze zone — tighten before hamburger takes over */
+@media (max-width:1060px){
+  .navbar{ padding-left:4%; padding-right:4%; }
+  .nav-links{ gap:20px; }
+  .nav-links a{ font-size:.7rem; letter-spacing:1px; }
+  .nav-book{ padding:8px 14px; font-size:.68rem !important; }
+  .team-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+/* Tablet */
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr; min-height:auto;}
+  .hero-right{height:46vh;}
+  .hero-left{padding:120px 8% 70px;}
+
+  .nav-links{
+    position:fixed; top:0; right:0; height:100vh; width:min(78vw,320px);
+    background:rgba(17,17,17,.98); flex-direction:column; align-items:flex-start;
+    justify-content:center; gap:28px; padding:40px;
+    transform:translateX(100%); transition:transform var(--transition-med);
+  }
+  .nav-links.open{transform:translateX(0);}
+  .nav-toggle{display:flex;}
+  .nav-close{display:block;}
+  .nav-backdrop{display:block; pointer-events:none;}
+
+  .section{padding:var(--space-section-y-mobile) var(--space-section-x-mobile);}
+  .about-preview{grid-template-columns:1fr; gap:36px;}
+  .team-grid{grid-template-columns:repeat(2,1fr);}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+  .why-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr; gap:36px;}
+  .menu-text{flex-direction:column; align-items:flex-start; gap:4px;}
+  .menu-dots{display:none;}
+}
+
+/* Mobile */
+@media (max-width:560px){
+  .fade-title{font-size:2.2rem;}
+  .hero-cta{flex-direction:column; align-items:flex-start; gap:16px;}
+  .section-title{font-size:1.8rem;}
+  .team-grid{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:1fr 1fr; grid-auto-rows:120px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column; align-items:flex-start;}
+  .menu-row{align-items:flex-start;}
+  .stat-row{gap:28px;}
+  .service-grid{grid-template-columns:1fr;}
+  .services-page-hero{padding:150px 6% 60px;}
+  .gallery-page-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:140px; gap:8px;}
+  .gallery-page-item.wide{grid-column:span 1;}
+  .lightbox-inner{max-width:92vw;}
+  .team-page-grid{grid-template-columns:1fr;}
+  .value-grid{grid-template-columns:1fr;}
+  .environment-grid{grid-template-columns:1fr;}
+  .achievement-row{gap:32px;}
+  .form-actions{flex-direction:column; align-items:stretch;}
+  .form-actions .btn-gold, .form-actions .btn-outline{text-align:center;}
+}
+
+/* Booking page responsive */
+@media (max-width:960px){
+  .booking-layout{ grid-template-columns:1fr; }
+  .booking-sidebar{ position:static; flex-direction:row; flex-wrap:wrap; }
+  .sidebar-summary{ flex:1; min-width:260px; }
+  .sidebar-testimonial{ flex:1; min-width:220px; }
+}
+@media (max-width:640px){
+  .booking-steps-strip{ flex-direction:column; gap:14px; text-align:center; }
+  .booking-step-arrow{ transform:rotate(90deg); }
+  .booking-sidebar{ flex-direction:column; }
+  .time-slots{ gap:8px; }
+  .time-slot-btn{ padding:9px 12px; font-size:.72rem; }
+  .form-step-actions{ flex-direction:column; }
+  .form-step-actions .btn-gold,
+  .form-step-actions .btn-outline{ text-align:center; width:100%; }
+}
