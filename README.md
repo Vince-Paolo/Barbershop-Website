@@ -21,7 +21,7 @@ To get a local copy up and running, follow these simple steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [Insert Your GitHub Repo Link Here]
+    git clone [https://github.com/Vince-Paolo/Barbershop-Website]
     ```
 2.  **Navigate to the project directory:**
     ```bash
