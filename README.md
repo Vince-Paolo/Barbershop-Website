@@ -47,7 +47,7 @@ To get a local copy up and running, follow these simple steps:
 ## 🔗 Links
 
 *   **Live Demo:** [Insert Live Demo URL Here]
-*   **GitHub Repository:** [Insert GitHub Link Here]
+*   **GitHub Repository:** [https://github.com/Vince-Paolo/Barbershop-Website]
 
 ---
 *Designed with an emphasis on seamless UX for modern barbershops.*[cite: 1]
