@@ -42,8 +42,6 @@ To get a local copy up and running, follow these simple steps:
 | :---: | :---: | :---: |
 | ![About Us](placeholder/about.jpg) | ![Admin Panel](placeholder/admin-dashboard.jpg) | ![Barber Stations](placeholder/barber-stations.jpg) |
 
-*(Note: Replace the placeholder image paths with the actual paths in your repository).*
-
 ## 🔗 Links
 
 *   **Live Demo:** [Insert Live Demo URL Here]
