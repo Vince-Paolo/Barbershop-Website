@@ -1,0 +1,47 @@
+/* ==========================================================================
+   FADED & CO — Manage Booking page
+   Reuses .form-card / .btn-gold / .btn-outline / .eyebrow / .section-title
+   and the admin bar + time-slot styles already defined elsewhere.
+   ========================================================================== */
+
+body[data-page="manage"]{ background:var(--color-bg); }
+
+.manage-wrap{
+  min-height:calc(100vh - 74px);
+  display:flex; align-items:flex-start; justify-content:center;
+  padding:64px var(--space-section-x);
+}
+.manage-card{ max-width:560px; width:100%; padding:48px 44px; }
+.manage-sub{
+  font-family:var(--font-body); color:var(--color-text-muted); font-size:.9rem;
+  line-height:1.7; text-align:center; max-width:420px; margin:0 auto;
+}
+
+.manage-summary{
+  border:1px solid #eee; border-radius:var(--radius-sm); padding:24px 26px; margin-bottom:28px;
+}
+.manage-summary-row{
+  display:flex; justify-content:space-between; align-items:baseline;
+  padding:8px 0; border-bottom:1px solid #f2f2f2; font-family:var(--font-body); font-size:.9rem;
+}
+.manage-summary-row:last-child{ border-bottom:none; }
+.manage-summary-label{
+  font-family:var(--font-ui); font-size:.66rem; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--color-text-muted);
+}
+.manage-summary-value{ font-weight:500; text-align:right; }
+
+.manage-actions{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.manage-danger-btn{ border-color:#c0392b !important; color:#c0392b !important; }
+.manage-danger-btn:hover{ background:#c0392b !important; color:#fff !important; }
+.manage-danger-btn-solid{
+  background:#c0392b !important; border-color:#c0392b !important; color:#fff !important;
+}
+.manage-danger-btn-solid:hover{ background:#a5311f !important; }
+
+.manage-subpanel{
+  margin-top:32px; padding-top:28px; border-top:1px solid #eee;
+}
+.manage-subpanel-title{
+  font-family:var(--font-display); font-weight:700; font-size:1.05rem; margin-bottom:18px; text-align:center;
+}

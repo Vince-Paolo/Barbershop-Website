@@ -1,60 +1,58 @@
 /* ==========================================================================
-   FADED & CO — Enhanced Booking
-   Multi-step form · Live sidebar · Time slots · Barber preview
-   Phone formatter · Notes counter · Start-over confirm
+   FADED & CO — Enhanced Booking (backend-connected)
+   Multi-step form · Live sidebar · Real-time time slots via /api/availability
+   Phone formatter · Notes counter · Start-over confirm · Real submit via /api/bookings
    ========================================================================== */
 
-window.initBooking = function initBooking() {
+window.initBooking = async function initBooking() {
   const form = document.getElementById('bookingForm');
   if (!form) return;
 
-  /* ── Data ──────────────────────────────────────────────────────────────── */
-  const SERVICES = {
-    'classic-haircut':  { label: 'Classic Haircut',          price: 200, duration: 30 },
-    'skin-fade':        { label: 'Skin Fade',                price: 280, duration: 40 },
-    'buzz-cut':         { label: 'Buzz Cut',                 price: 150, duration: 15 },
-    'beard-trim':       { label: 'Beard Trim',               price: 150, duration: 20 },
-    'hot-towel-shave':  { label: 'Hot Towel Shave',          price: 220, duration: 25 },
-    'hair-coloring':    { label: 'Hair Coloring',            price: 450, duration: 60 },
-    'kids-haircut':     { label: 'Kids Haircut',             price: 150, duration: 20 },
-    'hair-wash':        { label: 'Hair Wash',                price: 100, duration: 15 },
-    'premium-package':  { label: 'Premium Grooming Package', price: 550, duration: 75 },
-  };
+  /* ── Data (fetched from server so it never drifts from the backend) ─────── */
+  let SERVICES = {};
+  let BARBERS = {};
 
-  const BARBERS = {
-    '':               null,
-    'marco-reyes':    { name: 'Marco Reyes',      role: 'Master Barber',           specialty: 'Classic cuts & tapers',      photo: 'assets/images/team/marco-reyes.jpg' },
-    'jay-santos':     { name: 'Jay Santos',       role: 'Fade Specialist',         specialty: 'Skin fades & blends',        photo: 'assets/images/team/jay-santos.jpg' },
-    'eli-cruz':       { name: 'Eli Cruz',         role: 'Beard & Shave Specialist',specialty: 'Hot towel shaves & beards',  photo: 'assets/images/team/eli-cruz.jpg' },
-    'paolo-dela-cruz':{ name: 'Paolo Dela Cruz',  role: 'Junior Barber',           specialty: 'Kids & buzz cuts',           photo: 'assets/images/team/paolo-dela-cruz.jpg' },
-  };
-
-  // Time slots per day (24h)
-  const HOURS = {
-    0: { open: '10:00', close: '17:00' }, // Sun
-    1: { open: '09:00', close: '20:00' }, // Mon
-    2: { open: '09:00', close: '20:00' },
-    3: { open: '09:00', close: '20:00' },
-    4: { open: '09:00', close: '20:00' },
-    5: { open: '09:00', close: '20:00' }, // Fri
-    6: { open: '09:00', close: '19:00' }, // Sat
-  };
+  try {
+    const [servicesRes, barbersRes] = await Promise.all([
+      fetch('/api/services'),
+      fetch('/api/barbers'),
+    ]);
+    SERVICES = await servicesRes.json();
+    BARBERS = await barbersRes.json();
+  } catch (err) {
+    console.error('Could not reach booking server. Is `node server/server.js` running?', err);
+    const panel = form.querySelector('.booking-step-panel[data-panel="1"]');
+    if (panel) {
+      panel.insertAdjacentHTML(
+        'afterbegin',
+        `<p class="form-error" style="display:block;margin-bottom:1rem;">
+           Can't connect to the booking server right now. Make sure it's running
+           (<code>node server/server.js</code>) and refresh this page.
+         </p>`
+      );
+    }
+    return;
+  }
 
   /* ── Elements ──────────────────────────────────────────────────────────── */
-  const panels       = form.querySelectorAll('.booking-step-panel');
-  const progressSteps= document.querySelectorAll('.booking-progress-step');
-  const progressLines= document.querySelectorAll('.booking-progress-line');
+  const panels        = form.querySelectorAll('.booking-step-panel');
+  const progressSteps = document.querySelectorAll('.booking-progress-step');
+  const progressLines = document.querySelectorAll('.booking-progress-line');
 
-  const barberSelect = form.elements['barber'];
-  const serviceSelect= form.elements['service'];
-  const dateInput    = form.elements['date'];
-  const timeHidden   = form.elements['time'];
-  const notesTA      = form.elements['notes'];
-  const notesCount   = document.getElementById('notesCount');
-  const timeGroup    = document.getElementById('timeGroup');
-  const timeSlots    = document.getElementById('timeSlots');
-  const serviceDetail= document.getElementById('serviceDetail');
-  const barberPreview= document.getElementById('barberPreview');
+  const barberSelect  = form.elements['barber'];
+  const serviceSelect = form.elements['service'];
+  const dateInput     = form.elements['date'];
+  const timeHidden    = form.elements['time'];
+  const notesTA       = form.elements['notes'];
+  const notesCount    = document.getElementById('notesCount');
+  const timeGroup     = document.getElementById('timeGroup');
+  const timeSlots     = document.getElementById('timeSlots');
+  const waitlistOffer     = document.getElementById('waitlistOffer');
+  const waitlistOfferText = document.getElementById('waitlistOfferText');
+  const waitlistJoinBtn   = document.getElementById('waitlistJoinBtn');
+  const waitlistOfferNote = document.getElementById('waitlistOfferNote');
+  const serviceDetail = document.getElementById('serviceDetail');
+  const barberPreview = document.getElementById('barberPreview');
 
   // Sidebar
   const sbService  = document.getElementById('sb-service-val');
@@ -65,15 +63,19 @@ window.initBooking = function initBooking() {
   const sbDuration = document.getElementById('sb-duration-val');
 
   // Modals
-  const confirmModal   = document.getElementById('confirmModal');
-  const confirmDesc    = document.getElementById('confirmDesc');
-  const confirmClose   = document.getElementById('confirmClose');
-  const startOverModal = document.getElementById('startOverModal');
-  const startOverBtn   = document.getElementById('startOver');
-  const startOverCancel= document.getElementById('startOverCancel');
-  const startOverConfirm=document.getElementById('startOverConfirm');
+  const confirmModal    = document.getElementById('confirmModal');
+  const confirmDesc     = document.getElementById('confirmDesc');
+  const confirmManageLink = document.getElementById('confirmManageLink');
+  const confirmClose    = document.getElementById('confirmClose');
+  const startOverModal  = document.getElementById('startOverModal');
+  const startOverBtn    = document.getElementById('startOver');
+  const startOverCancel = document.getElementById('startOverCancel');
+  const startOverConfirm= document.getElementById('startOverConfirm');
+
+  const submitBtn = form.querySelector('button[type="submit"]');
 
   let currentStep = 1;
+  let availabilityToken = 0; // guards against out-of-order async responses
 
   /* ── Step navigation ───────────────────────────────────────────────────── */
   function goToStep(step) {
@@ -81,8 +83,8 @@ window.initBooking = function initBooking() {
     form.querySelector(`[data-panel="${step}"]`).classList.add('active');
 
     progressSteps.forEach((s, i) => {
-      s.classList.toggle('active',  i + 1 === step);
-      s.classList.toggle('done',    i + 1 < step);
+      s.classList.toggle('active', i + 1 === step);
+      s.classList.toggle('done', i + 1 < step);
     });
     progressLines.forEach((l, i) => l.classList.toggle('done', i + 1 < step));
 
@@ -176,6 +178,7 @@ window.initBooking = function initBooking() {
       barberPreview.style.display = 'none';
     }
     updateSidebar();
+    if (dateInput.value) buildTimeSlots();
   });
 
   /* ── Service detail chip ───────────────────────────────────────────────── */
@@ -192,7 +195,7 @@ window.initBooking = function initBooking() {
     if (dateInput.value) buildTimeSlots();
   });
 
-  /* ── Date → generate time slots ────────────────────────────────────────── */
+  /* ── Date → fetch real-time slots from the server ──────────────────────── */
   const today = new Date().toISOString().split('T')[0];
   dateInput.setAttribute('min', today);
 
@@ -201,36 +204,44 @@ window.initBooking = function initBooking() {
     updateSidebar();
   });
 
-  function buildTimeSlots() {
-    const val = dateInput.value;
-    if (!val) return;
-    const d   = new Date(val + 'T00:00:00');
-    const day = d.getDay();
-    const h   = HOURS[day];
+  async function buildTimeSlots() {
+    const date = dateInput.value;
+    const service = serviceSelect.value;
+    if (!date || !service) return;
 
-    // Clear previous selection
     timeHidden.value = '';
     updateSidebar();
+    hideWaitlistOffer();
 
-    const [openH, openM]  = h.open.split(':').map(Number);
-    const [closeH, closeM]= h.close.split(':').map(Number);
-    const openMins  = openH  * 60 + openM;
-    const closeMins = closeH * 60 + closeM;
+    const myToken = ++availabilityToken;
+    timeGroup.style.display = 'block';
+    timeSlots.innerHTML = `<p class="time-slots-loading">Checking real-time availability…</p>`;
 
-    // Build 30-min slots
-    const slots = [];
-    for (let m = openMins; m < closeMins; m += 30) {
-      const hh  = String(Math.floor(m / 60)).padStart(2,'0');
-      const mm  = String(m % 60).padStart(2,'0');
-      const ampm= m < 720 ? 'AM' : 'PM';
-      const h12 = Math.floor(m/60) % 12 || 12;
-      slots.push({ value: `${hh}:${mm}`, label: `${h12}:${mm} ${ampm}` });
+    const qs = new URLSearchParams({ date, service });
+    if (barberSelect.value) qs.set('barber', barberSelect.value);
+
+    let data;
+    try {
+      const res = await fetch(`/api/availability?${qs.toString()}`);
+      data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to load availability.');
+    } catch (err) {
+      if (myToken !== availabilityToken) return; // stale response, ignore
+      timeSlots.innerHTML = `<p class="time-slots-empty">Couldn't load available times. Please try again.</p>`;
+      return;
+    }
+    if (myToken !== availabilityToken) return; // a newer request has since been made
+
+    const slots = data.slots || [];
+    if (slots.length === 0) {
+      timeSlots.innerHTML = `<p class="time-slots-empty">No open slots that day — try another date${barberSelect.value ? ' or barber' : ''}.</p>`;
+      showWaitlistOffer();
+      return;
     }
 
-    timeSlots.innerHTML = slots.map(s =>
-      `<button type="button" class="time-slot-btn" data-value="${s.value}">${s.label}</button>`
+    timeSlots.innerHTML = slots.map((s) =>
+      `<button type="button" class="time-slot-btn" data-value="${s.time}">${formatTime(s.time)}</button>`
     ).join('');
-    timeGroup.style.display = 'block';
 
     timeSlots.querySelectorAll('.time-slot-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -242,6 +253,66 @@ window.initBooking = function initBooking() {
       });
     });
   }
+
+  /* ── Waitlist offer (shown when a date/service/barber has no open slots) ── */
+
+  function hideWaitlistOffer() {
+    waitlistOffer.style.display = 'none';
+    waitlistOfferNote.style.display = 'none';
+    waitlistOfferNote.textContent = '';
+    waitlistJoinBtn.disabled = false;
+    waitlistJoinBtn.textContent = 'Notify Me If a Slot Opens';
+    waitlistJoinBtn.style.display = 'inline-block';
+  }
+
+  function showWaitlistOffer() {
+    const b = BARBERS[barberSelect.value];
+    waitlistOfferText.textContent = b
+      ? `Fully booked with ${b.name} that day. Want us to reach out if a slot opens up?`
+      : `Fully booked that day. Want us to reach out if a slot opens up?`;
+    waitlistOffer.style.display = 'block';
+  }
+
+  waitlistJoinBtn.addEventListener('click', async () => {
+    // Reuse step-1 contact info — make sure it's actually filled in first.
+    if (!validateStep(1)) {
+      goToStep(1);
+      return;
+    }
+    if (!serviceSelect.value || !dateInput.value) return;
+
+    waitlistJoinBtn.disabled = true;
+    waitlistJoinBtn.textContent = 'Joining…';
+
+    const payload = {
+      name: form.elements['name'].value,
+      phone: form.elements['phone'].value,
+      email: form.elements['email'].value,
+      service: serviceSelect.value,
+      barber: barberSelect.value,
+      date: dateInput.value,
+      notes: form.elements['notes'].value,
+    };
+
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error((data.errors && Object.values(data.errors)[0]) || data.error || 'Could not join the waitlist.');
+
+      waitlistJoinBtn.style.display = 'none';
+      waitlistOfferNote.textContent = "You're on the waitlist — we'll reach out if that slot opens up.";
+      waitlistOfferNote.style.display = 'block';
+    } catch (err) {
+      waitlistJoinBtn.disabled = false;
+      waitlistJoinBtn.textContent = 'Notify Me If a Slot Opens';
+      waitlistOfferNote.textContent = err.message;
+      waitlistOfferNote.style.display = 'block';
+    }
+  });
 
   /* ── Pre-select from ?service= param ───────────────────────────────────── */
   const params = new URLSearchParams(window.location.search);
@@ -314,18 +385,80 @@ window.initBooking = function initBooking() {
     return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
-  /* ── Submit ────────────────────────────────────────────────────────────── */
-  form.addEventListener('submit', (e) => {
+  /* ── Submit (real POST to the backend) ─────────────────────────────────── */
+  let submitting = false;
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const svc  = SERVICES[serviceSelect.value];
-    const name = form.elements['name'].value;
-    const d    = new Date(dateInput.value + 'T00:00:00')
-      .toLocaleDateString('en-PH', { weekday:'long', month:'long', day:'numeric' });
-    const t = formatTime(timeHidden.value);
-    confirmDesc.textContent =
-      `${name}, you're booked for ${svc ? svc.label : 'your service'} on ${d} at ${t}. We'll send you an SMS confirmation shortly.`;
-    confirmModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    if (submitting) return;
+    if (!validateStep(1) || !validateStep(2)) return;
+
+    submitting = true;
+    const originalBtnText = submitBtn ? submitBtn.textContent : null;
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Booking…'; }
+
+    const payload = {
+      name: form.elements['name'].value,
+      phone: form.elements['phone'].value,
+      email: form.elements['email'].value,
+      service: serviceSelect.value,
+      barber: barberSelect.value,
+      date: dateInput.value,
+      time: timeHidden.value,
+      notes: form.elements['notes'].value,
+    };
+
+    try {
+      const res = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      if (res.status === 409) {
+        // Slot got taken between selection and submit — refresh slots and bounce back to step 2.
+        goToStep(2);
+        await buildTimeSlots();
+        const timeGroupErr = form.querySelector('[data-field="time"]');
+        if (timeGroupErr) showError(timeGroupErr, data.error || 'That slot was just booked. Please pick another time.');
+        return;
+      }
+      if (res.status === 422) {
+        goToStep(1);
+        Object.entries(data.errors || {}).forEach(([field, msg]) => {
+          const g = form.querySelector(`[data-field="${field}"]`);
+          if (g) showError(g, msg);
+        });
+        return;
+      }
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong. Please try again.');
+      }
+
+      const svc = SERVICES[serviceSelect.value];
+      const d = new Date(dateInput.value + 'T00:00:00')
+        .toLocaleDateString('en-PH', { weekday: 'long', month: 'long', day: 'numeric' });
+      const t = formatTime(timeHidden.value);
+      const assignedBarber = BARBERS[data.booking.barber];
+      confirmDesc.textContent =
+        `${payload.name}, you're booked for ${svc ? svc.label : 'your service'} on ${d} at ${t}` +
+        `${assignedBarber ? ` with ${assignedBarber.name}` : ''}. We've emailed your confirmation.`;
+      if (data.booking.manage_token) {
+        confirmManageLink.href = `manage.html?token=${data.booking.manage_token}`;
+        confirmManageLink.style.display = 'inline-block';
+      } else {
+        confirmManageLink.style.display = 'none';
+      }
+      confirmModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    } catch (err) {
+      const timeGroupErr = form.querySelector('[data-field="time"]');
+      if (timeGroupErr) showError(timeGroupErr, err.message);
+    } finally {
+      submitting = false;
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalBtnText; }
+    }
   });
 
   confirmClose.addEventListener('click', () => {
@@ -361,6 +494,7 @@ window.initBooking = function initBooking() {
     timeGroup.style.display = 'none';
     timeSlots.innerHTML = '';
     timeHidden.value = '';
+    hideWaitlistOffer();
     if (notesCount) notesCount.textContent = '0';
     updateSidebar();
     goToStep(1);

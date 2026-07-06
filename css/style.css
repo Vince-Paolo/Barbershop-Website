@@ -823,6 +823,28 @@ button.btn-gold{border:1px solid var(--color-secondary); cursor:pointer;}
   background:var(--color-primary); border-color:var(--color-primary);
   color:var(--color-accent);
 }
+.time-slots-loading, .time-slots-empty{
+  font-family:var(--font-ui); font-size:.8rem; color:var(--color-text-muted);
+  margin-top:10px;
+}
+
+/* Waitlist offer */
+.waitlist-offer{
+  background:#f0e9d2; border:1px solid rgba(212,175,55,.35); border-radius:var(--radius-sm);
+  padding:18px 20px; margin-top:14px;
+}
+.waitlist-offer-text{
+  font-family:var(--font-body); font-size:.85rem; color:var(--color-text);
+  line-height:1.6; margin:0 0 12px;
+}
+.waitlist-offer .btn-outline{
+  font-size:.7rem; padding:10px 20px;
+}
+.waitlist-offer-note{
+  font-family:var(--font-body); font-size:.82rem; color:#7a6a30;
+  margin:12px 0 0;
+}
+
 
 /* Hours hint */
 .hours-hint{
