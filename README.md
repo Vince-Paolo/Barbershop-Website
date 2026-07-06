@@ -40,7 +40,7 @@ To get a local copy up and running, follow these simple steps:
 
 | About Us Page | Admin Dashboard | Barber Stations |
 | :---: | :---: | :---: |
-| ![About Us](assets/images/placeholder_about.jpg) | ![Admin Panel](assets/images/placeholder_admin.jpg) | ![Barber Stations](assets/images/about/barber-stations.jpg) |
+| ![About Us](placeholder/about.jpg) | ![Admin Panel](placeholder/admin-dashboard.jpg) | ![Barber Stations](placeholder/barber-stations.jpg) |
 
 *(Note: Replace the placeholder image paths with the actual paths in your repository).*
 
