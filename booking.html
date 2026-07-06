@@ -204,6 +204,13 @@
             <div class="form-error"></div>
           </div>
 
+          <!-- Waitlist offer, shown when a date/service/barber has no open slots -->
+          <div class="waitlist-offer" id="waitlistOffer" style="display:none;">
+            <p class="waitlist-offer-text" id="waitlistOfferText"></p>
+            <button type="button" class="btn-outline" id="waitlistJoinBtn">Notify Me If a Slot Opens</button>
+            <p class="waitlist-offer-note" id="waitlistOfferNote" style="display:none;"></p>
+          </div>
+
           <!-- Hours hint -->
           <div class="hours-hint">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
@@ -349,6 +356,9 @@
     </div>
     <div class="confirm-title">You're booked.</div>
     <p class="confirm-desc" id="confirmDesc">We'll see you then!</p>
+    <p style="margin:4px 0 22px;">
+      <a href="#" id="confirmManageLink" class="btn-ghost" style="display:none;">Manage This Booking</a>
+    </p>
     <button class="btn-gold" id="confirmClose">Done</button>
   </div>
 </div>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Your Booking — Faded &amp; Co.</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/admin.css">
+<link rel="stylesheet" href="css/manage.css">
+</head>
+<body data-page="manage">
+
+<header class="admin-bar">
+  <a href="index.html" class="logo">FADED <span>&amp;</span> CO.</a>
+  <div class="admin-bar-tag">Your Booking</div>
+</header>
+
+<main id="main">
+  <section class="manage-wrap">
+
+    <!-- Loading -->
+    <div id="stateLoading" class="form-card manage-card">
+      <p class="empty-note" style="text-align:center;">Looking up your booking…</p>
+    </div>
+
+    <!-- Not found / bad token -->
+    <div id="stateNotFound" class="form-card manage-card" style="display:none;">
+      <div class="eyebrow" style="justify-content:center;">Not Found</div>
+      <h1 class="section-title" style="margin:0 auto 14px;text-align:center;max-width:none;">
+        We can't find <em>that booking.</em>
+      </h1>
+      <p class="manage-sub">
+        This link may be out of date, or the booking may have already been removed.
+        If you think this is a mistake, please contact us directly.
+      </p>
+      <p style="text-align:center;margin-top:24px;"><a href="booking.html" class="btn-gold">Make a New Booking</a></p>
+    </div>
+
+    <!-- Cancelled -->
+    <div id="stateCancelled" class="form-card manage-card" style="display:none;">
+      <div class="eyebrow" style="justify-content:center;">Cancelled</div>
+      <h1 class="section-title" style="margin:0 auto 14px;text-align:center;max-width:none;">
+        This booking was <em>cancelled.</em>
+      </h1>
+      <p class="manage-sub" id="cancelledSummary"></p>
+      <p style="text-align:center;margin-top:24px;"><a href="booking.html" class="btn-gold">Book a New Appointment</a></p>
+    </div>
+
+    <!-- Active booking: view / cancel / reschedule -->
+    <div id="stateActive" class="form-card manage-card" style="display:none;">
+      <div class="eyebrow" style="justify-content:center;">Manage Booking</div>
+      <h1 class="section-title" style="margin:0 auto 24px;text-align:center;max-width:none;">
+        Hey <em id="customerFirstName">there</em>.
+      </h1>
+
+      <div class="manage-summary" id="bookingSummary"></div>
+
+      <div class="manage-actions">
+        <button id="showRescheduleBtn" class="btn-outline">Reschedule</button>
+        <button id="showCancelBtn" class="btn-outline manage-danger-btn">Cancel Booking</button>
+      </div>
+
+      <!-- Reschedule panel -->
+      <div id="reschedulePanel" class="manage-subpanel" style="display:none;">
+        <h3 class="manage-subpanel-title">Pick a New Time</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="newDate">Date</label>
+            <input type="date" id="newDate">
+          </div>
+        </div>
+        <div class="form-group" id="newTimeGroup" style="display:none;margin-top:8px;">
+          <label>Available Times</label>
+          <div class="time-slots" id="newTimeSlots"></div>
+        </div>
+        <p class="form-error" id="rescheduleError"></p>
+        <div class="manage-actions" style="margin-top:20px;">
+          <button id="confirmRescheduleBtn" class="btn-gold" disabled>Confirm New Time</button>
+          <button id="cancelRescheduleBtn" class="btn-outline">Never Mind</button>
+        </div>
+      </div>
+
+      <!-- Cancel confirm panel -->
+      <div id="cancelPanel" class="manage-subpanel" style="display:none;">
+        <h3 class="manage-subpanel-title">Cancel this booking?</h3>
+        <p class="manage-sub" style="margin-bottom:20px;">This can't be undone — you'll need to make a new booking if you change your mind.</p>
+        <div class="manage-actions">
+          <button id="confirmCancelBtn" class="btn-gold manage-danger-btn-solid">Yes, Cancel It</button>
+          <button id="dismissCancelBtn" class="btn-outline">Keep My Booking</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<script src="js/manage.js"></script>
+</body>
+</html>

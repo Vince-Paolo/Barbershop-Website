@@ -1,0 +1,14 @@
+{
+  "name": "faded-co-barbershop",
+  "version": "1.0.0",
+  "description": "Faded & Co barbershop site with real-time booking backend",
+  "main": "server/server.js",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
+  },
+  "dependencies": {}
+}

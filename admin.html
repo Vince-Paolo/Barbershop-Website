@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Faded &amp; Co.</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body data-page="admin">
+
+<!-- ===== ADMIN BAR (same dark/gold system as the public navbar) ===== -->
+<header class="admin-bar" id="adminBar">
+  <a href="admin.html" class="logo">FADED <span>&amp;</span> CO.</a>
+  <div class="admin-bar-tag">Admin</div>
+
+  <button class="admin-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="adminBarActions">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="admin-bar-actions" id="adminBarActions">
+    <button class="admin-close" id="adminClose" type="button" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <nav class="admin-nav" id="adminNav">
+      <a href="#panel-analytics" class="admin-nav-link" data-target="panel-analytics">Analytics</a>
+      <a href="#panel-bookings" class="admin-nav-link" data-target="panel-bookings">Bookings</a>
+      <a href="#panel-waitlist" class="admin-nav-link" data-target="panel-waitlist">Waitlist<span class="admin-nav-badge" id="waitlistBadge" style="display:none;"></span></a>
+      <a href="#panel-schedule" class="admin-nav-link" data-target="panel-schedule">Schedule</a>
+    </nav>
+    <button class="admin-logout btn-ghost" id="logoutBtn" style="display:none;">Log Out</button>
+  </div>
+</header>
+<div class="admin-backdrop" id="adminBackdrop" aria-hidden="true"></div>
+<main id="main">
+
+  <!-- ===== LOGIN ===== -->
+  <section id="loginScreen" class="admin-login">
+    <div class="admin-login-card form-card" data-reveal data-reveal-delay="1">
+      <div class="eyebrow" style="justify-content:center;">Staff Access</div>
+      <h1 class="section-title" style="margin:0 auto 14px;text-align:center;max-width:none;">
+        Manage the <em>chair.</em>
+      </h1>
+      <p class="admin-login-sub">Enter the admin password to view bookings and manage the schedule.</p>
+      <form id="loginForm" class="admin-login-form">
+        <div class="form-group">
+          <label for="adminPassword">Password</label>
+          <input type="password" id="adminPassword" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="btn-gold">Sign In</button>
+      </form>
+      <div id="loginError" class="form-error" style="text-align:center;"></div>
+    </div>
+  </section>
+
+  <!-- ===== DASHBOARD ===== -->
+  <section id="dashboard" class="admin-dashboard section section-light" style="display:none;">
+
+    <div class="admin-panel" id="panel-analytics" data-reveal data-reveal-delay="1">
+      <div class="label-row">
+        <span class="label-num">01</span>
+        <span class="label-text">Analytics</span>
+      </div>
+      <h2 class="section-title" style="margin-bottom:14px;">At a Glance</h2>
+      <p class="admin-panel-desc">
+        Busiest hours &amp; days, most-booked services, and revenue by week —
+        computed from your confirmed bookings.
+      </p>
+
+      <form id="analyticsForm" class="admin-toolbar">
+        <div class="form-group">
+          <label for="analyticsFrom">From</label>
+          <input type="date" id="analyticsFrom">
+        </div>
+        <div class="form-group">
+          <label for="analyticsTo">To</label>
+          <input type="date" id="analyticsTo">
+        </div>
+        <button type="submit" class="btn-gold">Apply</button>
+        <button type="button" id="analyticsClear" class="btn-outline">All Time</button>
+      </form>
+
+      <div id="analyticsWrap"><div class="skeleton-rows"><div class="skeleton-row"></div><div class="skeleton-row"></div><div class="skeleton-row"></div><div class="skeleton-row"></div></div></div>
+    </div>
+
+    <div class="admin-panel" id="panel-bookings" data-reveal data-reveal-delay="2">
+      <div class="label-row">
+        <span class="label-num">02</span>
+        <span class="label-text">Appointments</span>
+      </div>
+      <h2 class="section-title" style="margin-bottom:32px;">Bookings</h2>
+
+      <div class="admin-toolbar">
+        <div class="form-group">
+          <label for="filterDate">Date</label>
+          <input type="date" id="filterDate">
+        </div>
+        <div class="form-group">
+          <label for="filterStatus">Status</label>
+          <select id="filterStatus">
+            <option value="">All</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="cancelled">Cancelled</option>
+            <option value="no_show">No-Show</option>
+          </select>
+        </div>
+        <button id="refreshBookings" class="btn-gold">Refresh</button>
+        <button id="clearFilters" class="btn-outline">Clear Filters</button>
+      </div>
+
+      <div id="bookingsTableWrap" class="admin-table-wrap">
+        <div class="skeleton-rows"><div class="skeleton-row"></div><div class="skeleton-row"></div><div class="skeleton-row"></div></div>
+      </div>
+    </div>
+
+    <div class="admin-panel" id="panel-waitlist" data-reveal data-reveal-delay="3">
+      <div class="label-row">
+        <span class="label-num">03</span>
+        <span class="label-text">Waitlist</span>
+      </div>
+      <h2 class="section-title" style="margin-bottom:14px;">Waitlist</h2>
+      <p class="admin-panel-desc">
+        Customers who asked to be notified when a full date/service opens up.
+        Entries flip to <strong>Notified</strong> automatically when a matching
+        booking is cancelled or deleted — there's no auto SMS/email yet, so
+        reach out yourself, then mark the entry Booked.
+      </p>
+
+      <form id="waitlistFilterForm" class="admin-toolbar">
+        <div class="form-group">
+          <label for="wlFilterDate">Date</label>
+          <input type="date" id="wlFilterDate">
+        </div>
+        <div class="form-group">
+          <label for="wlFilterStatus">Status</label>
+          <select id="wlFilterStatus">
+            <option value="">All</option>
+            <option value="waiting">Waiting</option>
+            <option value="notified">Notified</option>
+            <option value="booked">Booked</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+        <button type="button" id="wlRefresh" class="btn-gold">Refresh</button>
+        <button type="button" id="wlClearFilters" class="btn-outline">Clear Filters</button>
+      </form>
+
+      <div id="waitlistTableWrap" class="admin-table-wrap">
+        <div class="skeleton-rows"><div class="skeleton-row"></div><div class="skeleton-row"></div><div class="skeleton-row"></div></div>
+      </div>
+    </div>
+
+    <div class="admin-panel" id="panel-schedule" data-reveal data-reveal-delay="4">
+      <div class="label-row">
+        <span class="label-num">04</span>
+        <span class="label-text">Schedule</span>
+      </div>
+      <h2 class="section-title" style="margin-bottom:14px;">Block Time Off</h2>
+      <p class="admin-panel-desc">
+        Block a barber's chair (or the whole shop) for part of a day — vacation, lunch,
+        maintenance, etc. — either as a one-off date or a standing weekly rule (e.g.
+        "closed every Sunday"). Blocked time is excluded from real-time availability instantly.
+      </p>
+
+      <form id="timeoffForm" class="admin-toolbar admin-timeoff-form">
+        <div class="form-group">
+          <label for="toBarber">Barber</label>
+          <select id="toBarber" name="barber">
+            <option value="*">Whole shop</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="toRecurrence">Repeats</label>
+          <select id="toRecurrence">
+            <option value="once">One-off date</option>
+            <option value="weekly">Every week</option>
+          </select>
+        </div>
+        <div class="form-group" id="toDateGroup">
+          <label for="toDate">Date</label>
+          <input type="date" id="toDate" name="date">
+        </div>
+        <div class="form-group" id="toWeekdayGroup" style="display:none;">
+          <label for="toWeekday">Day of Week</label>
+          <select id="toWeekday" name="weekday">
+            <option value="0">Sunday</option>
+            <option value="1">Monday</option>
+            <option value="2">Tuesday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thursday</option>
+            <option value="5">Friday</option>
+            <option value="6">Saturday</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="toStart">Start</label>
+          <input type="time" id="toStart" name="start_time" required>
+        </div>
+        <div class="form-group">
+          <label for="toEnd">End</label>
+          <input type="time" id="toEnd" name="end_time" required>
+        </div>
+        <div class="form-group" style="flex:1;min-width:180px;">
+          <label for="toReason">Reason <span style="text-transform:none;letter-spacing:0;">(optional)</span></label>
+          <input type="text" id="toReason" name="reason" placeholder="e.g. Lunch break">
+        </div>
+        <button type="submit" class="btn-gold">Block</button>
+      </form>
+
+      <div id="timeoffTableWrap" class="admin-table-wrap">
+        <div class="skeleton-rows"><div class="skeleton-row"></div><div class="skeleton-row"></div><div class="skeleton-row"></div></div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="js/animation.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
