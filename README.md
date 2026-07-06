@@ -25,7 +25,7 @@ To get a local copy up and running, follow these simple steps:
     ```
 2.  **Navigate to the project directory:**
     ```bash
-    cd Barbershop
+    cd Barbershop-Website
     ```
 3.  **Open the application:**
     Simply open the `.html` files (such as `about.html` or `admin.html`) directly in your preferred web browser, or serve them using a local development server like Live Server in VS Code[cite: 1].
