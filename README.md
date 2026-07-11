@@ -44,7 +44,7 @@ To get a local copy up and running, follow these simple steps:
 
 ## 🔗 Links
 
-*   **Live Demo:** [Insert Live Demo URL Here]
+*   **Live Demo:** [https://barbershop-website-rbmx.onrender.com/]
 *   **GitHub Repository:** [https://github.com/Vince-Paolo/Barbershop-Website]
 
 ---
